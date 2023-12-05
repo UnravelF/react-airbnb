@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
-// 引入路由包
 import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
@@ -10,6 +9,7 @@ import 'normalize.css'
 import './assets/css/index.less'
 import store from './store'
 import theme from './assets/theme'
+import 'antd/dist/antd.less';
 
 // @ => src
 // 问题：react脚手架隐藏webpack
