@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 
 import HomeBanner from './c-cpns/home-banner'
 import SectionHeader from '@/components/section-header'
-import SectionRoom from '@/components/section-room'
+import SectionRooms from '@/components/section-rooms'
 import { HomeWrapper } from './style'
 import { fetchHomeDataAction } from '@/store/modules/home'
 
@@ -26,7 +26,7 @@ const Home = memo(() => {
       <div className='content'>
         <div className="good-price">
           <SectionHeader title={goodPriceInfo.title} />
-          <SectionRoom roomList={goodPriceInfo.list} />
+          <SectionRooms roomList={goodPriceInfo.list} />
         </div>
       </div>
     </HomeWrapper>
