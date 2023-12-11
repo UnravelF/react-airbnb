@@ -5,27 +5,30 @@ import HomeBanner from './c-cpns/home-banner'
 import { HomeWrapper } from './style'
 import { fetchHomeDataAction } from '@/store/modules/home'
 import HomeSectionV1 from './c-cpns/home-section-v1'
-
+import HomeSectionV2 from './c-cpns/home-section-v2'
+import { isEmptyObj } from 'utils'
 
 const Home = memo(() => {
-  // 派发异步事件: 发送网络请求
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchHomeDataAction())
-  }, [dispatch])
-
   // redux获取数据
-  const { goodPriceInfo, highScoreInfo } =  useSelector((state) => ({
+  const { goodPriceInfo, highScoreInfo, discountInfo } =  useSelector((state) => ({
     goodPriceInfo: state.home.goodPriceInfo,
-    highScoreInfo: state.home.highScoreInfo
+    highScoreInfo: state.home.highScoreInfo,
+    discountInfo: state.home.discountInfo,
   }), shallowEqual)
 
+    // 派发异步事件: 发送网络请求
+    const dispatch = useDispatch()
+    useEffect(() => {
+      dispatch(fetchHomeDataAction())
+    }, [dispatch])
+  
   return (
     <HomeWrapper>
       <HomeBanner />
       <div className='content'>
-        <HomeSectionV1 infoData={goodPriceInfo} />
-        <HomeSectionV1 infoData={highScoreInfo} />
+        {isEmptyObj(discountInfo) && <HomeSectionV2 infoData={discountInfo} /> }
+        {isEmptyObj(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} /> }
+        {isEmptyObj(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} /> }
       </div>
     </HomeWrapper>
   )

@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 
 export const ItemWrapper = styled.div.attrs(props =>({
-  verifyColor: props.verifyColor
+  verifyColor: props.verifyColor,
+  itemWidth: props.itemWidth,
 }))`
   box-sizing: border-box;
-  width: 25%;
+  width: ${props => props.itemWidth};
   padding: 8px;
 
   .inner {
