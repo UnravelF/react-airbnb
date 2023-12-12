@@ -10,10 +10,11 @@ import { isEmptyObj } from 'utils'
 
 const Home = memo(() => {
   // redux获取数据
-  const { goodPriceInfo, highScoreInfo, discountInfo } =  useSelector((state) => ({
+  const { goodPriceInfo, highScoreInfo, discountInfo, recommendInfo } =  useSelector((state) => ({
     goodPriceInfo: state.home.goodPriceInfo,
     highScoreInfo: state.home.highScoreInfo,
     discountInfo: state.home.discountInfo,
+    recommendInfo: state.home.recommendInfo
   }), shallowEqual)
 
     // 派发异步事件: 发送网络请求
@@ -27,6 +28,7 @@ const Home = memo(() => {
       <HomeBanner />
       <div className='content'>
         {isEmptyObj(discountInfo) && <HomeSectionV2 infoData={discountInfo} /> }
+        {isEmptyObj(recommendInfo) && <HomeSectionV2 infoData={recommendInfo} /> }
         {isEmptyObj(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} /> }
         {isEmptyObj(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} /> }
       </div>
