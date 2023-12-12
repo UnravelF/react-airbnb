@@ -7,14 +7,16 @@ import { fetchHomeDataAction } from '@/store/modules/home'
 import HomeSectionV1 from './c-cpns/home-section-v1'
 import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyObj } from 'utils'
+import HomeLongFor from './c-cpns/home-longfor'
 
 const Home = memo(() => {
   // redux获取数据
-  const { goodPriceInfo, highScoreInfo, discountInfo, recommendInfo } =  useSelector((state) => ({
+  const { goodPriceInfo, highScoreInfo, discountInfo, recommendInfo, longforInfo } =  useSelector((state) => ({
     goodPriceInfo: state.home.goodPriceInfo,
     highScoreInfo: state.home.highScoreInfo,
     discountInfo: state.home.discountInfo,
-    recommendInfo: state.home.recommendInfo
+    recommendInfo: state.home.recommendInfo,
+    longforInfo: state.home.longforInfo
   }), shallowEqual)
 
     // 派发异步事件: 发送网络请求
@@ -27,6 +29,7 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className='content'>
+        {isEmptyObj(longforInfo) && <HomeLongFor infoData={longforInfo} />}
         {isEmptyObj(discountInfo) && <HomeSectionV2 infoData={discountInfo} /> }
         {isEmptyObj(recommendInfo) && <HomeSectionV2 infoData={recommendInfo} /> }
         {isEmptyObj(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} /> }
