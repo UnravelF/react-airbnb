@@ -5,6 +5,7 @@ export const ItemWrapper = styled.div.attrs(props =>({
   verifyColor: props.verifyColor,
   itemWidth: props.itemWidth,
 }))`
+  flex-shrink: 0;
   box-sizing: border-box;
   width: ${props => props.itemWidth};
   padding: 8px;

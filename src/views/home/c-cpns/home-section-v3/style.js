@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const LongforWrapper = styled.div`
+export const SectionV3Wrapper = styled.div`
   margin-top: 30px;
-  
-  .longfor-list {
+
+  .room-list {
     margin: 0 -8px;
   }
 `

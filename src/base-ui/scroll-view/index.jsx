@@ -19,8 +19,6 @@ const ScrollView = memo((props) => {
     const clientWidth = scrollContentRef.current.clientWidth // 本身占据的宽度
     const totalDistance = scrollWidth - clientWidth
     totalDistanceRef.current = totalDistance
-    console.log("totalDistanceRef", totalDistanceRef.current);
-
     setShowRight(totalDistance > 0)
   }, [props.children])
 
@@ -30,10 +28,6 @@ const ScrollView = memo((props) => {
     const newEl = scrollContentRef.current.children[newIndex]
     const newOffsetLeft = newEl.offsetLeft
     scrollContentRef.current.style.transform = `translate(-${newOffsetLeft}px)`
-    console.log("newIndex", newIndex);
-    console.log("newOffsetLeft", newOffsetLeft);
-    console.log("totalDistanceRef.current", totalDistanceRef.current);
-    console.log("newOffsetLeft", newOffsetLeft);
     setPosIndex(newIndex)
     // 是否继续显示右边按钮 只要当前元素offsetLeft大于0 显示左边按钮
     setShowRight(totalDistanceRef.current > newOffsetLeft)
